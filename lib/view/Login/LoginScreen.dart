@@ -1,4 +1,5 @@
 import 'package:blog_app/Resources/Color/colors.dart';
+import 'package:blog_app/Resources/Components/TextInputField/InputField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,8 +14,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  final _formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.sizeOf(context).height * 1;
+    final width = MediaQuery.sizeOf(context).width * 1;
     return Scaffold(
          appBar: AppBar(
            title: Text('Login Screen'.tr,style:GoogleFonts.lato(
@@ -30,6 +36,16 @@ class _LoginScreenState extends State<LoginScreen> {
         body: SafeArea(
           child: Column(
             children: [
+              Form(
+                  child: Column(
+                    children: [
+                      InputField(myController: myController, focusNode: focusNode, onFieldSubmitted: onFieldSubmitted, obsecureText: obsecureText, hint: hint, keyboardType: keyboardType, onValidator: onValidator, icon: icon),
+                      SizedBox(height: height * .02,),
+
+                    ],
+                  )
+
+              )
 
             ],
           ),
