@@ -24,10 +24,14 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace = "com.example.blog_app"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
-
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+    defaultConfig {
+        applicationId 'com.menu.jkrk'
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 3
+        versionName "1.0"
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
