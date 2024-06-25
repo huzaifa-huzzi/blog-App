@@ -1,5 +1,7 @@
 import 'package:blog_app/Resources/Color/colors.dart';
 import 'package:blog_app/Resources/Components/TextInputField/InputField.dart';
+import 'package:blog_app/Utils/Utils.dart';
+import 'package:blog_app/view_model/Controller/Login/LoginController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,6 +16,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+     final controller = Get.put(LoginController());
 
   final _formkey = GlobalKey<FormState>();
 
@@ -35,12 +39,25 @@ class _LoginScreenState extends State<LoginScreen> {
          ),
         body: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Form(
                   child: Column(
                     children: [
-                      InputField(myController: myController, focusNode: focusNode, onFieldSubmitted: onFieldSubmitted, obsecureText: obsecureText, hint: hint, keyboardType: keyboardType, onValidator: onValidator, icon: icon),
+                      InputField(myController:controller.emailController.value, focusNode: controller.emailFocus.value, onFieldSubmitted: (value){
+
+                      }, obsecureText: false, hint:'Em_ail'.tr , keyboardType: TextInputType.text, onValidator: (value){
+                        if(value!.isEmpty){
+                          Utils.snackBar('Em_ail'.tr, '_email'.tr);
+                        }
+                      }, icon:Icons.email),
                       SizedBox(height: height * .02,),
+                      InputField(myController: controller.passwordController.value, focusNode: controller.passwordFocus.value, onFieldSubmitted: (value){}, obsecureText: true, hint: 'pass_word'.tr, keyboardType: TextInputType.number, onValidator: (value){
+                        if(value!.isEmpty){
+                          Utils.snackBar('pass_word'.tr, '_email'.tr);
+                        }
+                      }, icon: Icons.lock)
 
                     ],
                   )

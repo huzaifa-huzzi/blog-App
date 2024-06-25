@@ -11,7 +11,11 @@ class Languages extends Translations{
      'internet_Exception' : 'we are unable to show results. \n Please check your connections',
      'General_Exception' : 'We are unable to process your request.\n Please try again',
      'login Screen' : 'Login Screen',
-      'Signup' : 'SignUp Screen'
+      'Signup' : 'SignUp Screen',
+       'Em_ail':'Email',
+       '_email' : 'Enter Email',
+       'pass_word':'Password',
+       '_password':'Enter Password'
 
   },
 
