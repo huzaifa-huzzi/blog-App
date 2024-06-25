@@ -1,7 +1,10 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "kotlin-android-extensions"
+    id "com.google.gms.google-services"  // If you're using Firebase
+    id "com.google.firebase.crashlytics"  // If you're using Firebase
+    id "com.google.firebase.firebase-perf"  // If you're using Firebase Performance Monitoring
     id "dev.flutter.flutter-gradle-plugin"
 }
 
@@ -25,12 +28,11 @@ if (flutterVersionName == null) {
 
 android {
     compileSdkVersion 34
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "34.0.0"
 
     defaultConfig {
-        applicationId = "com.example.blog_app"
+        applicationId "com.example.blog_app"
         minSdkVersion 23
-        targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
