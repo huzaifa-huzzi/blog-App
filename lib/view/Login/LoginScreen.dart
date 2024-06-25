@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Column(
                       children: [
                         InputField(myController:controller.emailController.value, focusNode: controller.emailFocus.value, onFieldSubmitted: (value){
-
+                           Utils.fieldFocusChange(context, controller.emailFocus.value,controller.passwordFocus.value );
                         }, obsecureText: false, hint:'Em_ail'.tr , keyboardType: TextInputType.text, onValidator: (value){
                           if(value!.isEmpty){
                             Utils.snackBar('Em_ail'.tr, '_email'.tr);
@@ -77,13 +77,39 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 ),
                 SizedBox(height: height * 0.2,),
+                 Text.rich(
+                     TextSpan(
+                             style: TextStyle(),
+                                children: [
+                                TextSpan(
+                                  text: 'Forgot Passowrd ',
+                                 style: TextStyle(decoration: TextDecoration.underline,fontWeight: FontWeight.normal,fontSize: 18,color: AppColor.pinkColor),
+                                )
+                                ]
+                     ),
+                 ),
+                SizedBox(height: height * 0.2,),
                 RoundButton(title: 'Login', onPress: (){
                     if(_formkey.currentState!.validate()){
                       String email = controller.emailController.value.text;
                       String password = controller.passwordController.value.text;
                       controller.loginFtn(email, password, context);
                     }
-                })
+                }),
+                SizedBox(height: height * 0.2 ,),
+                Text.rich(
+                  TextSpan(
+                      text: 'Dont Have an Account ?',
+                      style: TextStyle(),
+                      children: [
+                        TextSpan(
+                          text: 'Sign Up ',
+                          style: TextStyle(decoration: TextDecoration.underline,fontWeight: FontWeight.normal,fontSize: 18,color: AppColor.pinkColor),
+                        )
+                      ]
+                  ),
+
+                ),
 
               ],
             );
